@@ -1,0 +1,25 @@
+$fadeOutAnimationDuration: 0.25s;
+$fadeOutAnimationEasing: ease-in-out;
+
+.fade-out-enter {
+    opacity: 0;
+    transition: opacity $fadeOutAnimationDuration $fadeOutAnimationEasing,
+    margin-top $fadeOutAnimationDuration $fadeOutAnimationEasing 150ms;
+    will-change: opacity, margin-top;
+}
+
+.fade-out-enter-active {
+    opacity: 1;
+}
+
+.fade-out-exit {
+    transition: opacity $fadeOutAnimationDuration $fadeOutAnimationEasing,
+    margin-top $fadeOutAnimationDuration $fadeOutAnimationEasing 150ms;
+    will-change: opacity, margin-top;
+    margin-top: -46px;
+}
+
+.fade-out-exit-active {
+    opacity: 0;
+    margin-top: -46px;
+}
