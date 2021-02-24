@@ -1,25 +1,23 @@
-$fadeOutAnimationDuration: 0.25s;
-$fadeOutAnimationEasing: ease-in-out;
+$fadeInOutAnimationDuration: 0.25s;
+$fadeInOutAnimationEasing: ease-in-out;
 
-.fade-out-enter {
+.fade-in-out-enter {
     opacity: 0;
-    transition: opacity $fadeOutAnimationDuration $fadeOutAnimationEasing,
-    margin-top $fadeOutAnimationDuration $fadeOutAnimationEasing 150ms;
+    transition: opacity $fadeInOutAnimationDuration $fadeInOutAnimationEasing,
+    margin-top $fadeInOutAnimationDuration $fadeInOutAnimationEasing 150ms;
     will-change: opacity, margin-top;
 }
 
-.fade-out-enter-active {
+.fade-in-out-enter-active {
     opacity: 1;
 }
 
-.fade-out-exit {
-    transition: opacity $fadeOutAnimationDuration $fadeOutAnimationEasing,
-    margin-top $fadeOutAnimationDuration $fadeOutAnimationEasing 150ms;
+.fade-in-out-exit {
+    transition: opacity $fadeInOutAnimationDuration $fadeInOutAnimationEasing,
+    margin-top $fadeInOutAnimationDuration $fadeInOutAnimationEasing 150ms;
     will-change: opacity, margin-top;
-    margin-top: -46px;
 }
 
-.fade-out-exit-active {
+.fade-in-out-exit-active {
     opacity: 0;
-    margin-top: -46px;
 }
