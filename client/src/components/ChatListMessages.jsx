@@ -4,6 +4,7 @@ import { SUBSCRIBE_MESSAGES } from '../queries/subscriptions';
 import { ChatMessage } from './ChatMessage';
 import { DELETE_MESSAGE } from '../queries/mutations';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { useTransitionCallback } from './hooks/useTransitionCallback';
 
 export const ChatListMessages = ({ user }) => {
   const [messages, setMessages] = useState([]);
@@ -28,22 +29,7 @@ export const ChatListMessages = ({ user }) => {
     [deleteMessage]
   );
 
-  const calculateMarginTop = (node) => {
-    const blockStyle = window.getComputedStyle(node);
-    const oldBorderTopStyle = blockStyle.borderTopWidth;
-    const oldBorderTop = oldBorderTopStyle
-      ? +oldBorderTopStyle.slice(0, -2)
-      : 0;
-
-    if (
-      node.dataset.name !== node.previousSibling?.dataset.name &&
-      node.nextSibling
-    ) {
-      node.style.marginTop = -1 * node.scrollHeight + 'px';
-    } else {
-      node.style.marginTop = -1 * (node.scrollHeight + oldBorderTop) + 'px';
-    }
-  };
+  const transitionCallback = useTransitionCallback();
 
   return (
     <div className="chat-list-messages">
@@ -54,7 +40,7 @@ export const ChatListMessages = ({ user }) => {
               key={item.id}
               timeout={400}
               classNames="fade-in-out"
-              onExit={(node) => calculateMarginTop(node)}
+              {...transitionCallback}
             >
               <ChatMessage
                 data={item}
