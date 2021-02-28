@@ -4,7 +4,7 @@ import { SubscriptionClient } from 'subscriptions-transport-ws';
 
 const client = new GraphQLClient({
   url: '/graphql',
-  subscriptionClient: new SubscriptionClient('ws://localhost:5000/graphql', {
+  subscriptionClient: new SubscriptionClient('ws://localhost:3000/graphql', {
     /* additional config options */
   }),
 });

@@ -1,5 +1,6 @@
 const express = require('express');
 const http = require('http');
+const path = require('path');
 const { ApolloServer, PubSub } = require('apollo-server-express');
 
 //TYPES
@@ -69,13 +70,18 @@ const server = new ApolloServer({
 });
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
+
+app.use(express.static(path.join(__dirname, '../client/', 'build')));
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, '../client/', 'build', 'index.html'));
+});
 
 server.applyMiddleware({ app, cors: false });
 const httpServer = http.createServer(app);
 server.installSubscriptionHandlers(httpServer);
 
 httpServer.listen({ port: PORT }, () => {
-  console.log(`server ready at http://localhost:${PORT}${server.graphqlPath}`)
-  console.log(`Subscriptions ready at ws://localhost:${PORT}${server.subscriptionsPath}`)
+  console.log(`app ready at http://localhost:${PORT}`)
 })
