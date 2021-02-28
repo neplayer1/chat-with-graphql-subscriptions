@@ -22,6 +22,12 @@ export const ChatSendButton = ({ user }) => {
     setMessage(e.target.value);
   };
 
+  const handleSendMessage = (e) => {
+    if (e.keyCode === 13 && e.ctrlKey) {
+      handleAddMessage();
+    }
+  };
+
   return (
     <>
       <div className="chat-textarea">
@@ -31,6 +37,7 @@ export const ChatSendButton = ({ user }) => {
             placeholder="Type message..."
             value={message}
             onChange={(e) => handleChangeMessage(e)}
+            onKeyDown={(e) => handleSendMessage(e)}
           />
           <pre>
             <span>{message}</span>

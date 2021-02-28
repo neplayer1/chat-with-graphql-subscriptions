@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install": "(cd client && npm install) && (cd server && npm install)",
+    "install": "concurrently \"(cd client && npm install)\" \"(cd server && npm install)\"",
     "start": "(cd client && npm run build) && (cd server && npm run start)",
     "test": "(cd client && npm run test)"
   },
@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/neplayer1/chat-with-graphql-subscriptions/issues"
   },
-  "homepage": "https://github.com/neplayer1/chat-with-graphql-subscriptions#readme"
+  "homepage": "https://github.com/neplayer1/chat-with-graphql-subscriptions#readme",
+  "dependencies": {
+    "concurrently": "^6.0.0"
+  }
 }
